@@ -25,7 +25,11 @@ SECRET_KEY = 'i_8$e&=cfr5bd1r(@^@gd@2y@+0@i0%ldpeke108o+pux&hsn4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#虚拟机看我们的地址
 ALLOWED_HOSTS = ['127.0.0.1', '192.168.33.10', 'localhost']
+
+#虚拟机的地址
+INTERNAL_IPS = ['10.0.2.2']
 
 
 # Application definition
@@ -37,12 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
 
     # third party
     'rest_framework',
 
     # project apps
     'accounts',
+    'tweets',
 ]
 
 REST_FRAMEWORK = {
@@ -51,6 +57,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
